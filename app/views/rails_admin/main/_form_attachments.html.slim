@@ -1,0 +1,6 @@
+.images
+  - @object.images.each do |img|
+    = image_tag(img.url(:thumbnail))
+  = form.file_field :image
+/= render "form_nested_many", form: form, field: field
+/= render "form_file_upload"
