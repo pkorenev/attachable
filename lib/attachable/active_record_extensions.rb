@@ -27,7 +27,7 @@ module Attachable
         name ||=  multiple ? :attachments : :attachment
         return false if self._reflections.keys.include?(name.to_s)
 
-        send reflection_method, name, -> { where(assetable_field_name: name) }, as: :assetable, class_name: "Asset", dependent: :destroy, autosave: true
+        send reflection_method, name, -> { where(assetable_field_name: name) }, as: :assetable, class_name: "Attachable::Asset", dependent: :destroy, autosave: true
         accepts_nested_attributes_for name
         attr_accessible name, "#{name}_attributes"
 
