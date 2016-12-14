@@ -21,7 +21,7 @@ class Attachable::Asset < ActiveRecord::Base
 
   has_attached_file :data, styles: proc {|attachment| attachment.instance.attachment_styles }
 
-  do_not_validate_attachment_file_type :data
+  do_not_validate_attachment_file_type :data if respond_to?(:do_not_validate_attachment_file_type)
 
   delegate :url, :path, :exists?, :styles, to: :data
 
